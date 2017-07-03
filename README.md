@@ -17,7 +17,7 @@ helm install pgadmin-0.1.0.tgz
 ```
 Optionally, you can provide a custom username and password:
 ```
-helm install --set username=myuser,password=mypassword pgadmin-0.1.0.tgz
+helm install --set pgadmin.username=myuser,pgadmin.password=mypassword pgadmin-0.1.0.tgz
 ```
 The deployment will take a while to provision a public IP for the service. You can watch for this using the following command:
 ```

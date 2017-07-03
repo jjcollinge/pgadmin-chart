@@ -21,9 +21,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: DEFAULT_USER
-            value: {{ .Values.config.username }}
+            value: {{ .Values.pgadmin.username }}
           - name: DEFAULT_PASSWORD
-            value: {{ .Values.config.password }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "fullname" . }}
+                key: pgadmin-password
           ports:
             - containerPort: {{ .Values.service.internalPort }}
           resources:

@@ -8,8 +8,8 @@ service:
   type: LoadBalancer
   externalPort: 5050
   internalPort: 5050
-config:
+pgadmin:
   username: pgadmin4@pgadmin.org
-  password: admin
+  #password: admin
 resources: {}
 
