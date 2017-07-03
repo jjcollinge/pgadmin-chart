@@ -12,7 +12,7 @@ pgadmin:
   username: pgadmin4@pgadmin.org
   #password: admin
 persistence:
-  enabled: false
+  enabled: true
   #storageClass:
   accessMode: ReadWriteOnce
   size: 4Gi
