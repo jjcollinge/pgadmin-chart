@@ -33,4 +33,4 @@ When the deployment has finished and you have an external IP for your pgAdmin se
 
 Once logged in, add a new server and provide the Cluster IP, username and password for your postgres service.
 
-<img src="docs/psql.PNG" />
+<img src="images/psql.PNG" />
