@@ -11,5 +11,10 @@ service:
 pgadmin:
   username: pgadmin4@pgadmin.org
   #password: admin
+persistence:
+  enabled: false
+  #storageClass:
+  accessMode: ReadWriteOnce
+  size: 4Gi
 resources: {}
 

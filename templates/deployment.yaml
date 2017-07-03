@@ -29,8 +29,19 @@ spec:
                 key: pgadmin-password
           ports:
             - containerPort: {{ .Values.service.internalPort }}
+          volumeMounts:
+          - name: pgadmin-data
+            mountPath: /var/lib/pgadmin4
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+      volumes:
+        - name: pgadmin-data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ template "fullname" . }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
