@@ -1,0 +1,15 @@
+replicaCount: 1
+image:
+  repository: fenglc/pgadmin4
+  tag:
+  pullPolicy: IfNotPresent
+service:
+  name: pgadmin
+  type: LoadBalancer
+  externalPort: 5050
+  internalPort: 5050
+config:
+  username: pgadmin4@pgadmin.org
+  password: admin
+resources: {}
+

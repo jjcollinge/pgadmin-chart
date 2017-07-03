@@ -1,0 +1,8 @@
+apiVersion: v1
+description: A pgAdmin Helm chart for Kubernetes
+name: pgadmin
+home: https://www.pgadmin.org/
+source:
+  - https://github.com/jjcollinge/pgadmin-chart
+  - https://www.pgadmin.org/
+version: 0.1.0
