@@ -4,6 +4,26 @@ This is a single Helm chart that deploys a pgAdmin instance to your Kubernetes c
 ## Prerequisites
 This install assumes you have an existing Kubernetes cluster installed and a [postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql) instance deployed.
 
+TLS support requires the [cert-manager](https://github.com/jetstack/cert-manager) Kubernetes add-on to be deployed into your cluster.
+
+## Chart Configuration
+
+The defaults in `values.yaml` will make your pgAdmin deployment accessible by its IP address over plaintext HTTP.
+
+To access your pgAdmin instance using a domain name over *plaintext HTTP*:
+
+1. set `service.type` to `NodePort`
+2. set `ingress.enabled` to `true`
+3. reserve a static IP address in your Kubernetes cluster (using e.g. `gcloud compute addresses create my-pgadmin-static-ip --global` for GCP)
+4. set `ingress.staticIPReservation` to the name of the static IP address reservation you created in step 3
+5. At your domain registrar, create an A record pointing to the static IP address you reserved in step 3
+
+To access your pgAdmin instance using a domain name over *HTTPS*, do the above steps, and as well:
+
+6. Set `ingress.tls.enabled` to `true`
+7. Set `ingress.tls.clusterIssuer` to the name of a [cert-manager](https://github.com/jetstack/cert-manager) `ClusterIssuer` deployed in your Kubernetes cluster
+8. Set `ingress.tls.externalDNSName` to the (fully-qualified) domain name you registered in step 5
+
 ## Package
 Once you've cloned this repo, you can create your helm package by running the following command in the repo's root directory:
 ```

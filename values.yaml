@@ -8,6 +8,13 @@ service:
   type: LoadBalancer
   externalPort: 5050
   internalPort: 5050
+ingress:
+  enabled: false
+  staticIPReservation: pgadmin-static-ip
+  tls:
+    enabled: false
+    clusterIssuer: letsencrypt-staging
+    externalDNSName: pgadmin.example.com
 pgadmin:
   username: pgadmin4@pgadmin.org
   #password: admin
