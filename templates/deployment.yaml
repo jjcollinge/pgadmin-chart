@@ -29,6 +29,14 @@ spec:
                 key: pgadmin-password
           ports:
             - containerPort: {{ .Values.service.internalPort }}
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: {{ .Values.service.internalPort }}
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 15
+            failureThreshold: 5
           volumeMounts:
           - name: pgadmin-data
             mountPath: /var/lib/pgadmin4
