@@ -1,3 +1,5 @@
+> Note: This project is now archived. Unfortunately I don't have the time to maintain this chart or test PRs / respond to issues. Please feel free to fork it and take it in your own direction.
+
 # PGAdmin
 This is a single Helm chart that deploys a pgAdmin instance to your Kubernetes cluster.
 
